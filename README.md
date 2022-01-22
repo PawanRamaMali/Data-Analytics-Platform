@@ -1,6 +1,6 @@
-# ✅ Data-Analytics-Application
+# ✅ Data-Analytics-Platform
 
-R Shiny App template for Data Analytics Application
+Data-Analytics-Platform using R Shiny Framework 
 
 ## Motivation
 
