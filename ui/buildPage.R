@@ -7,16 +7,41 @@ tabPanel("Source",
                                    ))),
                    fluidRow(column(
                      3,
+                     
+                     ####BS Modals
+                     bsModal(
+                       "importdata",
+                       "Import data",
+                       "go_importdata",
+                       size = "small",
+                       selectInput(
+                         "DataBase.Type",
+                         "Data Base Type",
+                         c(
+                           "Tabular",
+                           "Json"
+                         ),
+                         selected = "Tabular"
+                       ),
+                       conditionalPanel(
+                         "input['DataBase.Type']=='Tabular' || input['DataBase.Type']=='Json'",
+                         fileInput(
+                           'InputFile',
+                           h4('Import Data'),
+                           accept = c(".csv", ".xlsx", ".xls", ".json"),
+                           width = '100%'
+                         ),
+                         tags$hr(),
+                         checkboxInput("header", "Header", TRUE)
+                         
+                       )
+
+                       
+                     ),
                      div(
                        class = "jumbotron",
-                       fileInput(
-                         inputId = "InputFile",
-                         label = "Select File",
-                         multiple = TRUE,
-                         accept = c(".csv,.tsv,.txt,.pdf,.json,.XML")
-                       ),
-                       tags$hr(),
-                       checkboxInput("header", "Header", TRUE),
+                       actionButton("go_importdata", "Import"),
+                    
                      )
                    ),
                    column(
